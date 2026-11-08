@@ -36,6 +36,9 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# claude code (no usado en este proyecto)
+.claude/
+
 example
 
 # generated native folders

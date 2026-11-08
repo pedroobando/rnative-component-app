@@ -1,9 +1,48 @@
+@import "tailwindcss";
+@import "uniwind";
+
+/*
+ * Paleta de la app (única fuente de la verdad de los colores).
+ * Tailwind v4 + Uniwind son "CSS-first": NO hace falta tailwind.config.js.
+ * Cada token `--color-*` se expone como utilidad:
+ *   bg-primary, text-text, border-secondary, bg-success...
+ * y cambia solo según el tema activo (light/dark).
+ *
+ * Si necesitas el valor en JS: useCSSVariable('--color-primary') de 'uniwind'.
+ */
+@layer theme {
+  :root {
+    @variant light {
+      --color-primary: #49129c;
+      --color-secondary: #b40086;
+      --color-tertiary: #ef2967;
+      --color-success: #52d49b;
+
+      --color-text: #000000;
+      --color-background: #f5f5f5;
+    }
+
+    @variant dark {
+      --color-primary: #7a4edc;
+      --color-secondary: #d138a8;
+      --color-tertiary: #ff527f;
+      --color-success: #3a9d78;
+
+      --color-text: #ecedee;
+      --color-background: #17202a;
+    }
+  }
+}
+
 :root {
   --font-display:
-    Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji,
-    Segoe UI Symbol, Noto Color Emoji;
+    Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  --font-rounded: 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif;
-  --font-serif: Georgia, 'Times New Roman', serif;
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
+    Courier New, monospace;
+  --font-rounded:
+    "SF Pro Rounded", "Hiragino Maru Gothic ProN", Meiryo, "MS PGothic",
+    sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
 }

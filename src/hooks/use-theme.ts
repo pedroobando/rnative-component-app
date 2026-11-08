@@ -1,14 +1,22 @@
 /**
- * Learn more about light and dark modes:
- * https://docs.expo.dev/guides/color-schemes/
+ * Tema actual de la app (Uniwind).
+ *
+ * - `theme`: 'light' | 'dark' (el tema `system` se resuelve al que marca el SO)
+ *
+ * La paleta vive en `src/global.css` como variables `--color-*` y se usa con
+ * clases (`bg-primary`, `text-text`). Si alguna vez necesitas el valor en JS
+ * (StatusBar, gradientes, `tintColor`...), lee la variable directamente:
+ *
+ *   import { useCSSVariable } from 'uniwind';
+ *   const primary = useCSSVariable('--color-primary');
+ *
+ * https://docs.uniwind.dev/theming/basics
  */
 
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useUniwind } from 'uniwind';
 
 export function useTheme() {
-  const scheme = useColorScheme();
-  const theme = scheme === 'dark' ? 'dark' : 'light';
+  const { theme } = useUniwind();
 
-  return Colors[theme];
+  return { theme };
 }

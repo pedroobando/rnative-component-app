@@ -34,6 +34,16 @@ Run lint and typecheck before declaring any task done.
 Use EAS to build, sign, and submit the app in the cloud (`eas build`, `eas submit`) and to ship over-the-air updates (`eas update`) — no local Xcode or Android Studio required. Run EAS CLI as `bunx eas-cli <command>` in Bun projects, or `npx eas-cli@latest <command>` otherwise; substitute that for bare `eas` in docs examples.
 Docs: https://docs.expo.dev/eas/index.md
 
+## Skills
+
+Two skills are available (read them before acting on their topics):
+
+- **context7-mcp** (`~/.agents/skills/context7-mcp/SKILL.md`) — use whenever a question involves a library, framework or API reference (React, Expo, React Navigation, TanStack, Supabase…) or needs code examples. Fetch current docs instead of relying on memory: `resolve-library-id` → pick best match → `query-docs` (one concept per query, prefer version-specific IDs).
+  - The Context7 MCP server is already configured **for this project only** in `.pi/mcp.json` (`context7` → `https://mcp.context7.com/mcp`, tools: `resolve-library-id`, `query-docs`). It requires project trust; after changing `.pi/mcp.json` run `/reload` in the session (or `pi mcp list` from the shell) to pick it up. If the tools are unavailable, fall back to the official docs URL directly.
+- **find-skills** (`~/.agents/skills/find-skills/SKILL.md`) — use when the user asks for a capability that may exist as a skill ("how do I do X", "find a skill for X"). Check the [skills.sh leaderboard](https://skills.sh/) first, then `npx skills find <query>`; verify quality (install count ≥1K, reputable owner, repo stars) before recommending, and offer to install with `npx skills add <owner/repo@skill> -g -y`.
+
+Prefer these over guessing APIs: `AGENTS.md`/Expo docs first for Expo specifics, Context7 for third-party libraries.
+
 ## Rules
 
 - If `ios/` and `android/` directories do not exist, they are generated (Continuous Native Generation). Never create or edit them by hand — configure native behavior in `app.json` and config plugins.
