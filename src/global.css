@@ -8,7 +8,13 @@
  *   bg-primary, text-text, border-secondary, bg-success...
  * y cambia solo según el tema activo (light/dark).
  *
- * Si necesitas el valor en JS: useCSSVariable('--color-primary') de 'uniwind'.
+ * Temas disponibles: light, dark (built-in) + ocean, emerald, orange y tokyo
+ * (registrados en metro.config.js -> extraThemes).
+ *
+ * IMPORTANTE: todos los temas deben definir EXACTAMENTE el mismo conjunto
+ * de variables, o Uniwind avisa en __DEV__ y alguna variable queda sin valor.
+ *
+ * Si necesitas el valor en JS: useThemeColor('nombre') de '@/hooks/use-theme-color'.
  */
 @layer theme {
   :root {
@@ -20,6 +26,7 @@
 
       --color-text: #000000;
       --color-background: #f5f5f5;
+      --color-border: #e2e2e6;
     }
 
     @variant dark {
@@ -30,6 +37,55 @@
 
       --color-text: #ecedee;
       --color-background: #17202a;
+      --color-border: #2c3a47;
+    }
+
+    /* OCEAN — azules profundos y turquesas */
+    @variant ocean {
+      --color-primary: #0284c7;
+      --color-secondary: #0ea5e9;
+      --color-tertiary: #14b8a6;
+      --color-success: #22c55e;
+
+      --color-text: #0b2239;
+      --color-background: #eef6fb;
+      --color-border: #c7deeb;
+    }
+
+    /* EMERALD — verdes profundos */
+    @variant emerald {
+      --color-primary: #047857;
+      --color-secondary: #059669;
+      --color-tertiary: #65a30d;
+      --color-success: #16a34a;
+
+      --color-text: #06251c;
+      --color-background: #eefaf3;
+      --color-border: #c4e6d6;
+    }
+
+    /* TOKIO NIGHT — fondo azul profundo con acentos neón */
+    @variant tokyo {
+      --color-primary: #7aa2f7;
+      --color-secondary: #bb9af7;
+      --color-tertiary: #7dcfff;
+      --color-success: #9ece6a;
+
+      --color-text: #c0caf5;
+      --color-background: #1a1b26;
+      --color-border: #2f334d;
+    }
+
+    /* ORANGE — naranja combinado con gris */
+    @variant orange {
+      --color-primary: #ea580c;
+      --color-secondary: #71717a;
+      --color-tertiary: #fb923c;
+      --color-success: #16a34a;
+
+      --color-text: #27272a;
+      --color-background: #f4f4f5;
+      --color-border: #d4d4d8;
     }
   }
 }

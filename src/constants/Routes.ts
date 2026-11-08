@@ -62,8 +62,17 @@ export const animationMenuRoutes = [
   },
 ];
 
-export const allRoutes = [
-  ...menuRoutes,
-  ...uiMenuRoutes,
-  ...animationMenuRoutes,
-];
+// export const initialMenuRoutes = [
+//   {
+//     title: 'Inicio',
+//     icon: 'cube-outline',
+//     name: 'index',
+//   },
+//   {
+//     title: 'Acerca de',
+//     icon: 'albums-outline',
+//     name: 'about',
+//   },
+// ];
+
+export const allRoutes = [...menuRoutes, ...uiMenuRoutes, ...animationMenuRoutes];

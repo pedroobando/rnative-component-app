@@ -1,5 +1,8 @@
 import { Link } from 'expo-router';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
 const palette = [
   { name: 'primary', className: 'bg-primary' },
@@ -10,11 +13,15 @@ const palette = [
 
 export default function HomeScreen() {
   return (
-    <View className="flex-1 items-center justify-center gap-6 p-6">
-      <Text className="text-3xl font-bold text-primary">Hola Mundo</Text>
-      <Text className="text-center text-text">
+    // <View className="flex-1 items-center justify-center gap-6 p-6">
+    <ThemedView className="flex-1 items-center justify-center gap-6 p-6" safe={true}>
+      <ThemedText textType="h1" className="text-primary">
+        Hola Mundo
+      </ThemedText>
+
+      <ThemedText className="text-center w-10/12">
         Paleta definida en el tema de Uniwind (src/global.css)
-      </Text>
+      </ThemedText>
 
       <View className="flex-row gap-4">
         {palette.map((color) => (
@@ -22,13 +29,19 @@ export default function HomeScreen() {
         ))}
       </View>
 
-      <Text className="text-sm text-text">
+      <ThemedText className="text-sm">
         bg-primary · bg-secondary · bg-tertiary · bg-success
-      </Text>
+      </ThemedText>
 
-      <Link href="/about" className="rounded-xl bg-primary px-6 py-3 font-semibold text-white">
-        Ir a &quot;Acerca de&quot;
+      <Link href="/about" className="rounded-xl bg-primary px-6 py-3">
+        <ThemedText textType="semi-bold" className="text-white">
+          Ir a &quot;Acerca de&quot;
+        </ThemedText>
       </Link>
-    </View>
+
+      <Link href="/themes" className="rounded-xl border border-border px-6 py-3">
+        <ThemedText textType="semi-bold">Cambiar de tema</ThemedText>
+      </Link>
+    </ThemedView>
   );
 }
