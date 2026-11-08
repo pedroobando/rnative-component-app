@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 
 export default function AboutScreen() {
   return (
-    <View className="flex-1 items-center justify-center gap-6 bg-background p-6">
+    <View className="flex-1 items-center justify-center gap-6 p-6">
       <Text className="text-2xl font-bold text-text">Acerca de</Text>
       <Text className="text-center text-text">
         Esta es la ruta /about. El layout raíz (src/app/_layout.tsx) solo dibuja el Stack.

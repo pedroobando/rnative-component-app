@@ -10,7 +10,7 @@ const palette = [
 
 export default function HomeScreen() {
   return (
-    <View className="flex-1 items-center justify-center gap-6 bg-background p-6">
+    <View className="flex-1 items-center justify-center gap-6 p-6">
       <Text className="text-3xl font-bold text-primary">Hola Mundo</Text>
       <Text className="text-center text-text">
         Paleta definida en el tema de Uniwind (src/global.css)
