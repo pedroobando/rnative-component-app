@@ -1,4 +1,27 @@
-export const menuRoutes = [
+/**
+ * Rutas de la app.
+ *
+ * Cada entrada describe una pantalla de `src/app/`:
+ *  - `title`: texto que se ve en el header y en el menú lateral.
+ *  - `icon`:  nombre del icono en Ionicons (https://icons.expo.fyi).
+ *  - `name`:  nombre de la ruta dentro de `src/app` (sin la barra inicial).
+ *
+ * Ej: `pull-to-refresh/index` -> `src/app/pull-to-refresh/index.tsx` -> `/pull-to-refresh`
+ */
+
+export type MenuRoute = {
+  title: string;
+  icon: string;
+  name: string;
+};
+
+/** Sección del menú lateral: un título y sus rutas. */
+export type MenuSection = {
+  title: string;
+  routes: MenuRoute[];
+};
+
+export const menuRoutes: MenuRoute[] = [
   {
     title: 'Pull to refresh',
     icon: 'refresh-outline',
@@ -31,7 +54,7 @@ export const menuRoutes = [
   },
 ];
 
-export const uiMenuRoutes = [
+export const uiMenuRoutes: MenuRoute[] = [
   {
     title: 'Switches',
     icon: 'toggle-outline',
@@ -49,7 +72,7 @@ export const uiMenuRoutes = [
   },
 ];
 
-export const animationMenuRoutes = [
+export const animationMenuRoutes: MenuRoute[] = [
   {
     title: 'Animation 101',
     icon: 'cube-outline',
@@ -62,7 +85,21 @@ export const animationMenuRoutes = [
   },
 ];
 
-// export const initialMenuRoutes = [
+/** Rutas generales de la app (Inicio, Acerca de). */
+export const homeMenuRoutes: MenuRoute[] = [
+  {
+    title: 'Inicio',
+    icon: 'home-outline',
+    name: 'index',
+  },
+  {
+    title: 'Acerca de',
+    icon: 'information-circle-outline',
+    name: 'about',
+  },
+];
+
+// export const initialMenuRoutes: MenuRoute[] = [
 //   {
 //     title: 'Inicio',
 //     icon: 'cube-outline',
@@ -76,3 +113,24 @@ export const animationMenuRoutes = [
 // ];
 
 export const allRoutes = [...menuRoutes, ...uiMenuRoutes, ...animationMenuRoutes];
+
+/**
+ * Secciones del menú lateral, en el orden en que se muestran.
+ * Se construye a partir de los arrays de arriba para no duplicar información.
+ */
+export const drawerSections: MenuSection[] = [
+  { title: 'General', routes: homeMenuRoutes },
+  { title: 'Componentes', routes: menuRoutes },
+  { title: 'UI', routes: uiMenuRoutes },
+  { title: 'Animaciones', routes: animationMenuRoutes },
+];
+
+/**
+ * Convierte el nombre de una ruta en su URL.
+ * `index` -> `/` · `about` -> `/about` · `pull-to-refresh/index` -> `/pull-to-refresh`
+ */
+export function routeToPath(name: string): string {
+  const path = `/${name}`.replace(/\/index$/, '');
+
+  return path === '' ? '/' : path;
+}
