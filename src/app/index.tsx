@@ -19,7 +19,7 @@ export default function HomeScreen() {
         Hola Mundo
       </ThemedText>
 
-      <ThemedText className="text-center">
+      <ThemedText className="text-center w-10/12">
         Paleta definida en el tema de Uniwind (src/global.css)
       </ThemedText>
 

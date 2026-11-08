@@ -7,6 +7,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useAppNavigationTheme } from '@/hooks/use-app-navigation-theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
 
+import { allRoutes } from '@/constants/Routes';
 import '@/global.css';
 
 SplashScreen.preventAutoHideAsync();
@@ -39,6 +40,10 @@ export default function RootLayout() {
         >
           <Stack.Screen name="index" options={{ title: 'Inicio' }} />
           <Stack.Screen name="about" options={{ title: 'Acerca de' }} />
+
+          {allRoutes.map((route) => (
+            <Stack.Screen key={route.name} name={route.name} options={{ title: route.title }} />
+          ))}
         </Stack>
       </ThemeProvider>
     </GestureHandlerRootView>
