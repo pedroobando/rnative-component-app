@@ -88,14 +88,9 @@ export const animationMenuRoutes: MenuRoute[] = [
 /** Rutas generales de la app (Inicio, Acerca de). */
 export const homeMenuRoutes: MenuRoute[] = [
   {
-    title: 'Inicio',
-    icon: 'home-outline',
-    name: 'index',
-  },
-  {
     title: 'Acerca de',
     icon: 'information-circle-outline',
-    name: 'about',
+    name: 'abouts/index',
   },
 ];
 
@@ -115,10 +110,10 @@ export const homeMenuRoutes: MenuRoute[] = [
 export const allRoutes = [...menuRoutes, ...uiMenuRoutes, ...animationMenuRoutes];
 
 /**
- * Secciones del menú lateral, en el orden en que se muestran.
+ * Secciones del menú, en el orden en que se muestran.
  * Se construye a partir de los arrays de arriba para no duplicar información.
  */
-export const drawerSections: MenuSection[] = [
+export const menuSections: MenuSection[] = [
   { title: 'General', routes: homeMenuRoutes },
   { title: 'Componentes', routes: menuRoutes },
   { title: 'UI', routes: uiMenuRoutes },
@@ -127,7 +122,7 @@ export const drawerSections: MenuSection[] = [
 
 /**
  * Convierte el nombre de una ruta en su URL.
- * `index` -> `/` · `about` -> `/about` · `pull-to-refresh/index` -> `/pull-to-refresh`
+ * `index` -> `/` · `abouts/index` -> `/abouts` · `pull-to-refresh/index` -> `/pull-to-refresh`
  */
 export function routeToPath(name: string): string {
   const path = `/${name}`.replace(/\/index$/, '');
