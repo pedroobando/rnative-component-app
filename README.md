@@ -1,56 +1,90 @@
-# Welcome to your Expo app 👋
+# Component App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicación móvil multiplataforma (iOS, Android y web) construida con **Expo SDK 58** y **React Native 0.88** que sirve como catálogo y banco de pruebas de componentes, navegabilidad y animaciones.
 
-## Get started
+No es una app de producto: es una **app de laboratorio** donde cada pantalla aísla una capacidad concreta del framework (listados, scroll infinito, modales, refresh, temas, animaciones, controles nativos) para poder estudiarla y reutilizarla.
 
-1. Install dependencies
+## Qué hace
 
-   ```bash
-   npm install
-   ```
+- **Navegación con menú lateral (Drawer)** definido por enrutado basado en archivos (Expo Router), con secciones *General*, *Componentes*, *UI* y *Animaciones*.
+- **Temas claro/oscuro y temáticos** (light, dark, ocean, emerald, orange, tokyo) con tokens CSS compartidos entre Tailwind v4 y Uniwind; el tema del sistema se respeta automáticamente.
+- **Paleta y componentes base reutilizables** (`ThemedView`, `ThemedText`) que se adaptan al tema activo sin código condicional.
+- **Pantallas de demostración** para los patrones más usados en apps móviles.
 
-2. Start the app
+## Pantallas
 
-   ```bash
-   npx expo start
-   ```
+| Ruta | Qué demuestra |
+| --- | --- |
+| `/` | Portada: paleta de tokens, enlaces con `Link` y `router.push`. |
+| `/about` | Navegación declarativa vs. imperativa con Expo Router. |
+| `/themes` | Cambio de tema en caliente con `Uniwind.setTheme()`. |
+| `/pull-to-refresh` | Patrón de recarga tirando hacia abajo. |
+| `/section-list` | Listas agrupadas con `SectionList`. |
+| `/modal` | Presentación de pantallas modales. |
+| `/infinite-scroll` | Paginación y scroll infinito. |
+| `/slides` | Contenedor de slides / carrusel. |
+| `/switches` | Controles de tipo switch/checkbox. |
+| `/alerts` | Alertas y diálogos nativos. |
+| `/text-inputs` | Campos de texto y validación de entrada. |
+| `/animation-101` | Fundamentos de animación con Reanimated. |
+| `/animation-102` | Patrones avanzados de animación. |
 
-In the output, you'll find options to open the app in a
+## Stack
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- **Expo SDK 58** · React Native 0.88 · React 19
+- **Expo Router** con rutas tipadas (`typedRoutes`) y React Compiler habilitado
+- **Uniwind** + **Tailwind CSS v4** (CSS-first, sin `tailwind.config.js`)
+- **Reanimated 4** + **Gesture Handler** para animaciones y gestos
+- **@expo/ui**, `@expo/vector-icons`, `expo-symbols`, `expo-image`, `expo-glass-effect`
+- **TypeScript** estricto
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Estructura
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+src/
+├── app/            # Pantallas. Cada archivo es una ruta (Expo Router)
+│   ├── _layout.tsx # Layout raíz: Drawer + tema de navegación
+│   └── ...         # Una carpeta/archivo por pantalla
+├── components/     # Componentes reutilizables (ThemedText, ThemedView, drawer)
+├── constants/      # Rutas del menú y catálogo de temas
+├── hooks/          # Hooks de tema y color de navegación
+└── utils/          # Utilidades (contraste de color)
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+Las rutas del menú lateral se declaran una sola vez en `src/constants/Routes.ts`; el layout raíz las registra automáticamente, por lo que añadir una pantalla es un paso de dos: crear el archivo en `src/app/` y añadir su entrada en `Routes.ts`.
 
-### Other setup steps
+## Puesta en marcha
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Requiere Node.js y [pnpm](https://pnpm.io) (el proyecto usa `pnpm-lock.yaml`).
 
-## Learn more
+```bash
+pnpm install
+pnpm start          # servidor de desarrollo de Expo
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+Comandos disponibles:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+pnpm start          # Expo dev server
+pnpm ios            # abre en el simulador de iOS
+pnpm android        # abre en el emulador de Android
+pnpm web            # abre en el navegador
+pnpm lint           # ESLint (configuración de Expo)
+npx tsc --noEmit    # comprobación de tipos
+```
 
-## Join the community
+> **Nota:** las dependencias con código nativo (`@expo/ui`, `expo-glass-effect`, Reanimated) no vienen en Expo Go. Para probarlas en un dispositivo o emulador necesitas una *development build*: `npx expo run:ios`, `npx expo run:android` o `eas build --profile development`.
 
-Join our community of developers creating universal apps.
+## Temas
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Los colores viven en un único sitio: `src/global.css`. Cada tema define el mismo conjunto de variables (`--color-primary`, `--color-secondary`, `--color-tertiary`, `--color-success`, `--color-text`, `--color-background`, `--color-border`), y se exponen como utilidades de Tailwind/Uniwind (`bg-primary`, `text-text`, `border-border`, …).
+
+Los temas adicionales (ocean, emerald, orange, tokyo) se registran en `metro.config.js` (`extraThemes`). Para leer un token desde JavaScript usa `useThemeColor` o `useResolvedColor` de `@/hooks/`.
+
+## Inteligencia artificial
+
+En el desarrollo de este proyecto se utilizó el **TUI de Pi** como asistente de programación, junto con el modelo de lenguaje **minimax-m3.1-flash**.
+
+## Licencia
+
+MIT — ver [LICENSE](./LICENSE).

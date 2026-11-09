@@ -36,13 +36,23 @@ Docs: https://docs.expo.dev/eas/index.md
 
 ## Skills
 
-Two skills are available (read them before acting on their topics):
+Seven skills are installed. Read the relevant `SKILL.md` before acting on its topic.
+
+### Project skills (`.agents/skills/`)
+
+- **expo-router** (`.agents/skills/expo-router/SKILL.md`) — navigation and routing for Expo Router: file-based routes, groups, dynamic routes, `Link` with previews, native Stack, page titles, modals and form sheets, NativeTabs, headers and toolbars, header search bars. See `references/` for route structure, tabs, form sheets, search, zoom transitions.
+- **expo-animation** (`.agents/skills/expo-animation/SKILL.md`) — animating anything in an Expo app: gestures, sheets, screen transitions, press feedback, haptics; decides what to animate, which thread it runs on, which properties, spring vs. timing, and how motion degrades. Uses Reanimated, Gesture Handler, Expo Router and `expo-haptics`. For web animation use `animate`. See also `RECIPES.md`.
+- **expo-native-ui** (`.agents/skills/expo-native-ui/SKILL.md`) — building native-feeling screens: Apple HIG styling, semantic colors, native controls, SF Symbols, media, visual effects, gradients, storage, responsive layout. See `references/` for controls, gradients, icons, media, storage, visual effects, WebGPU/Three.
+- **expo-dev-client** (`.agents/skills/expo-dev-client/SKILL.md`) — building and distributing Expo development clients locally or via TestFlight for internal testing. For production TestFlight releases and store submission, use the `eas-app-stores` skill.
+- **vercel-react-native-skills** (`.agents/skills/vercel-react-native-skills/SKILL.md`) — React Native/Expo performance best practices (Vercel): component authoring, list performance, animations, native modules. Individual rules live in `rules/` (e.g. `list-performance-*`, `animation-gpu-properties`, `ui-styling`, `react-compiler-*`).
+
+### Global skills (`~/.agents/skills/`)
 
 - **context7-mcp** (`~/.agents/skills/context7-mcp/SKILL.md`) — use whenever a question involves a library, framework or API reference (React, Expo, React Navigation, TanStack, Supabase…) or needs code examples. Fetch current docs instead of relying on memory: `resolve-library-id` → pick best match → `query-docs` (one concept per query, prefer version-specific IDs).
   - The Context7 MCP server is already configured **for this project only** in `.pi/mcp.json` (`context7` → `https://mcp.context7.com/mcp`, tools: `resolve-library-id`, `query-docs`). It requires project trust; after changing `.pi/mcp.json` run `/reload` in the session (or `pi mcp list` from the shell) to pick it up. If the tools are unavailable, fall back to the official docs URL directly.
 - **find-skills** (`~/.agents/skills/find-skills/SKILL.md`) — use when the user asks for a capability that may exist as a skill ("how do I do X", "find a skill for X"). Check the [skills.sh leaderboard](https://skills.sh/) first, then `npx skills find <query>`; verify quality (install count ≥1K, reputable owner, repo stars) before recommending, and offer to install with `npx skills add <owner/repo@skill> -g -y`.
 
-Prefer these over guessing APIs: `AGENTS.md`/Expo docs first for Expo specifics, Context7 for third-party libraries.
+Prefer these over guessing APIs: `AGENTS.md`/Expo docs first for Expo specifics, the Expo skills above for router/UI/animation work, and Context7 for third-party libraries.
 
 ## Rules
 

@@ -1,5 +1,4 @@
-import { ThemeProvider } from 'expo-router';
-import { Drawer } from 'expo-router/drawer';
+import { Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 
@@ -7,9 +6,6 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { useAppNavigationTheme } from '@/hooks/use-app-navigation-theme';
 import { useThemeColor } from '@/hooks/use-theme-color';
-
-import { AppDrawerContent } from '@/components/drawer/app-drawer-content';
-import { MenuButton } from '@/components/drawer/menu-button';
 
 import { allRoutes, homeMenuRoutes } from '@/constants/Routes';
 import '@/global.css';
@@ -24,8 +20,6 @@ export default function RootLayout() {
   // También puedes pasar colores: useThemeColor({ light: 'red', dark: 'indigo' }, 'background')
   const backgroundColor = useThemeColor({}, 'background');
   const textColor = useThemeColor({}, 'text');
-  const primaryColor = useThemeColor({}, 'primary');
-  const borderColor = useThemeColor({}, 'border');
 
   useEffect(() => {
     SplashScreen.hideAsync();
@@ -35,10 +29,9 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ backgroundColor: backgroundColor, flex: 1 }}>
       <ThemeProvider value={navigationTheme}>
         {/* El layout raíz define el navegador de pantallas.
-          Es un Drawer (menu lateral): el icono de la esquina superior izquierda
-          lo abre y se puede deslizar con el dedo desde el borde.
-          Cada archivo de src/app/ es una ruta: index.tsx -> "/" */}
-        <Drawer
+          Es un Stack: cada archivo de src/app/ es una ruta (index.tsx -> "/")
+          y el menú de secciones vive dentro de la pantalla de inicio. */}
+        <Stack
           screenOptions={{
             // Header
             headerStyle: { backgroundColor },
@@ -46,46 +39,31 @@ export default function RootLayout() {
             headerTitleStyle: { color: textColor },
             headerTitleAlign: 'left',
             headerShadowVisible: false,
-            headerLeft: () => <MenuButton tintColor={textColor} />,
 
             // Contenido de las pantallas
-            sceneStyle: { backgroundColor },
-
-            // Menu lateral
-            drawerStyle: { backgroundColor },
-            drawerActiveTintColor: '#ffffff',
-            drawerInactiveTintColor: textColor,
-            drawerActiveBackgroundColor: primaryColor,
-            drawerLabelStyle: { fontWeight: '600' },
+            contentStyle: { backgroundColor },
           }}
-          drawerContent={(props) => (
-            <AppDrawerContent
-              {...props}
-              colors={{
-                background: backgroundColor ?? '#ffffff',
-                primary: primaryColor ?? '#49129c',
-                text: textColor ?? '#000000',
-                border: borderColor ?? '#e2e2e6',
-              }}
-            />
-          )}
         >
-          {homeMenuRoutes.map((route) => (
-            <Drawer.Screen
-              key={route.name}
-              name={route.name}
-              options={{ title: route.title, drawerLabel: route.title }}
-            />
-          ))}
+          <Stack.Screen name="index" options={{ title: 'Menú' }} />
+
+          {homeMenuRoutes
+            .filter((route) => route.name !== 'index')
+            .map((route) => (
+              <Stack.Screen
+                key={route.name}
+                name={route.name}
+                options={{ title: route.title }}
+              />
+            ))}
 
           {allRoutes.map((route) => (
-            <Drawer.Screen
+            <Stack.Screen
               key={route.name}
               name={route.name}
-              options={{ title: route.title, drawerLabel: route.title }}
+              options={{ title: route.title }}
             />
           ))}
-        </Drawer>
+        </Stack>
       </ThemeProvider>
     </GestureHandlerRootView>
   );
