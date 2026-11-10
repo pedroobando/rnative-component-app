@@ -24,7 +24,7 @@
 
 import { useCSSVariable } from 'uniwind';
 
-import { useAppColorScheme } from '@/hooks/use-app-color-scheme';
+import { useAppColorScheme } from './use-app-color-scheme';
 
 export type ThemeColors = {
   light?: string;

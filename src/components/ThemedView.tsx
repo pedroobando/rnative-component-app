@@ -1,7 +1,7 @@
 import { View, type ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { useResolvedColor } from '@/hooks/use-resolved-color';
+import { useResolvedColor } from '@/hooks';
 
 export type ThemedViewEdge = 'top' | 'bottom' | 'left' | 'right';
 

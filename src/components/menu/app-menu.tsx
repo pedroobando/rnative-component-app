@@ -3,7 +3,7 @@ import { router, type Href } from 'expo-router';
 import { Pressable, ScrollView, View } from 'react-native';
 
 import { routeToPath, menuSections, type MenuRoute } from '@/constants/Routes';
-import { useResolvedColor } from '@/hooks/use-resolved-color';
+import { useResolvedColor } from '@/hooks';
 
 import { ThemedText } from '../ThemedText';
 

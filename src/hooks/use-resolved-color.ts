@@ -10,7 +10,7 @@
  */
 
 import { themeColorTokens } from '@/constants/themes';
-import { useThemeColor } from '@/hooks/use-theme-color';
+import { useThemeColor } from './use-theme-color';
 
 export function useResolvedColor(value?: string): string | undefined {
   const isToken = value !== undefined && (themeColorTokens as readonly string[]).includes(value);

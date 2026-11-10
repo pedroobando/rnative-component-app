@@ -19,8 +19,8 @@
 
 import { DarkTheme, DefaultTheme, type Theme } from 'expo-router';
 
-import { useAppColorScheme } from '@/hooks/use-app-color-scheme';
-import { useThemeColor } from '@/hooks/use-theme-color';
+import { useAppColorScheme } from './use-app-color-scheme';
+import { useThemeColor } from './use-theme-color';
 
 export function useAppNavigationTheme(): Theme {
   const scheme = useAppColorScheme();

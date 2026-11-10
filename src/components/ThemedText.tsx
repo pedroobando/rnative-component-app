@@ -1,6 +1,6 @@
 import { Text, type TextProps, type TextStyle } from 'react-native';
 
-import { useResolvedColor } from '@/hooks/use-resolved-color';
+import { useResolvedColor } from '@/hooks';
 
 /** Tipos de texto disponibles. */
 export type TextType = 'normal' | 'h1' | 'h2' | 'h3' | 'semi-bold' | 'link';

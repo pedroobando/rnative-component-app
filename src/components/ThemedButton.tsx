@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Pressable, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
 
-import { useResolvedColor } from '@/hooks/use-resolved-color';
+import { useResolvedColor } from '@/hooks';
 import { getContrastingColor, isDarkColor } from '@/utils/contrast';
 
 import { ThemedText } from './ThemedText';

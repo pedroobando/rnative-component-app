@@ -4,7 +4,7 @@ import { Uniwind, useUniwind } from 'uniwind';
 
 import { ThemedText, ThemedView } from '@/components';
 import { appThemes, type UniwindThemeName } from '@/constants/themes';
-import { useResolvedColor } from '@/hooks/use-resolved-color';
+import { useResolvedColor } from '@/hooks';
 
 export default function ThemesScreen() {
   const { theme, hasAdaptiveThemes } = useUniwind();

@@ -4,8 +4,7 @@ import { useEffect } from 'react';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { useAppNavigationTheme } from '@/hooks/use-app-navigation-theme';
-import { useThemeColor } from '@/hooks/use-theme-color';
+import { useAppNavigationTheme, useThemeColor } from '@/hooks';
 
 import { allRoutes, homeMenuRoutes } from '@/constants/Routes';
 import '@/global.css';
