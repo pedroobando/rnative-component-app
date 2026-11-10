@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { GestureDetector } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 
@@ -20,31 +20,30 @@ const Animation102Screen = () => {
 
   return (
     <ThemedView className="flex-1" margin>
-      <ThemedText textType="h2">Animation 102</ThemedText>
-      <ThemedText style={{ opacity: 0.7 }} className="mt-1">
-        Mantén pulsada la caja y arrástrala: la pantalla se oscurece y la caja te sigue.
-      </ThemedText>
+      <ScrollView>
+        <ThemedText textType="h2">Animation 102</ThemedText>
+        <ThemedText style={{ opacity: 0.7 }} className="mt-1">
+          Mantén pulsada la caja y arrástrala: la pantalla se oscurece y la caja te sigue.
+        </ThemedText>
 
-      <View className="relative mt-4 flex-1 overflow-hidden rounded-2xl border border-border">
-        {/* Capa que oscurece la pantalla al pulsar */}
-        <Animated.View
-          pointerEvents="none"
-          style={[
-            { position: 'absolute', inset: 0, backgroundColor: '#000' },
-            overlayStyle,
-          ]}
-        />
+        <View className="relative mt-4 flex-1 overflow-hidden rounded-2xl border border-border">
+          {/* Capa que oscurece la pantalla al pulsar */}
+          <Animated.View
+            pointerEvents="none"
+            style={[{ position: 'absolute', inset: 0, backgroundColor: '#000' }, overlayStyle]}
+          />
 
-        {/* Caja en el centro */}
-        <View className="flex-1 items-center justify-center">
-          <GestureDetector gesture={gesture}>
-            <Animated.View
-              className="rounded-2xl bg-primary"
-              style={[{ width: BOX_SIZE, height: BOX_SIZE }, boxStyle]}
-            />
-          </GestureDetector>
+          {/* Caja en el centro */}
+          <View className="flex-1 items-center justify-center">
+            <GestureDetector gesture={gesture}>
+              <Animated.View
+                className="rounded-2xl bg-primary"
+                style={[{ width: BOX_SIZE, height: BOX_SIZE }, boxStyle]}
+              />
+            </GestureDetector>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </ThemedView>
   );
 };

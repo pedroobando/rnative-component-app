@@ -6,6 +6,8 @@ export { useDraggableBox } from './use-draggable-box';
 export { useResolvedColor } from './use-resolved-color';
 export { useTheme } from './use-theme';
 export { useThemeColor } from './use-theme-color';
+export { ThemedAlertProvider, useThemedAlert } from './use-themed-alert';
 
 // Tipos públicos
 export type { UseDraggableBoxOptions } from './use-draggable-box';
+export type { ThemedAlertOptions } from './use-themed-alert';

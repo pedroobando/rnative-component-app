@@ -99,6 +99,22 @@ export function getContrastRatio(colorA?: string | null, colorB?: string | null)
   return (lighter + 0.05) / (darker + 0.05);
 }
 
+/**
+ * Devuelve el mismo color con la opacidad indicada (0-1).
+ *
+ * Útil para placeholders, textos secundarios o bordes que necesitan ser
+ * más tenues que el color base del tema.
+ */
+export function withOpacity(color?: string | null, opacity = 1): string | undefined {
+  const rgb = parseColor(color);
+
+  if (!rgb) {
+    return color ?? undefined;
+  }
+
+  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
+}
+
 /** `true` si el color es oscuro (luminosidad < 0.5). */
 export function isDarkColor(color?: string | null): boolean {
   return getLuminance(color) < 0.5;
