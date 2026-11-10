@@ -3,14 +3,24 @@
  *
  * Permite importar todo desde una sola ruta:
  *   import { ThemedText, ThemedView } from '@/components';
+ *
+ * Los componentes que resuelven sus colores con el tema activo viven en
+ * `src/components/themed/` y también se pueden importar directamente:
+ *   import { ThemedText } from '@/components/themed';
  */
 
 export { AppMenu } from './menu/app-menu';
-export { ThemedButton } from './ThemedButton';
-export { ThemedText } from './ThemedText';
-export { ThemedView } from './ThemedView';
+
+export {
+  ThemedButton,
+  ThemedSwitch,
+  ThemedSwitchRow,
+  ThemedText,
+  ThemedView,
+} from './themed';
 
 // Tipos públicos
-export type { ThemedButtonProps } from './ThemedButton';
-export type { ThemedTextProps, TextType } from './ThemedText';
-export type { ThemedViewProps, ThemedViewEdge } from './ThemedView';
+export type { ThemedButtonProps } from './themed';
+export type { ThemedSwitchProps, ThemedSwitchRowProps } from './themed';
+export type { ThemedTextProps, TextType } from './themed';
+export type { ThemedViewProps, ThemedViewEdge } from './themed';
