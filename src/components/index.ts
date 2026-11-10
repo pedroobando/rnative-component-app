@@ -11,8 +11,12 @@
 
 export { AppMenu } from './menu/app-menu';
 
+export { KeyboardAwareScrollView, useKeyboardAwareInput } from './KeyboardAwareScrollView';
+
 export {
   ThemedButton,
+  ThemedInputText,
+  ThemedInputTextV2,
   ThemedSwitch,
   ThemedSwitchRow,
   ThemedText,
@@ -20,7 +24,10 @@ export {
 } from './themed';
 
 // Tipos públicos
+export type { KeyboardAwareScrollViewProps } from './KeyboardAwareScrollView';
 export type { ThemedButtonProps } from './themed';
+export type { ThemedInputTextProps } from './themed';
+export type { ThemedInputTextV2Props } from './themed';
 export type { ThemedSwitchProps, ThemedSwitchRowProps } from './themed';
 export type { ThemedTextProps, TextType } from './themed';
 export type { ThemedViewProps, ThemedViewEdge } from './themed';

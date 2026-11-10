@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { useAppNavigationTheme, useThemeColor } from '@/hooks';
+import { ThemedAlertProvider, useAppNavigationTheme, useThemeColor } from '@/hooks';
 
 import { allRoutes, homeMenuRoutes } from '@/constants/Routes';
 import '@/global.css';
@@ -27,42 +27,44 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ backgroundColor: backgroundColor, flex: 1 }}>
       <ThemeProvider value={navigationTheme}>
-        {/* El layout raíz define el navegador de pantallas.
-          Es un Stack: cada archivo de src/app/ es una ruta (index.tsx -> "/")
-          y el menú de secciones vive dentro de la pantalla de inicio. */}
-        <Stack
-          screenOptions={{
-            // Header
-            headerStyle: { backgroundColor },
-            headerTintColor: textColor,
-            headerTitleStyle: { color: textColor },
-            headerTitleAlign: 'left',
-            headerShadowVisible: false,
+        <ThemedAlertProvider>
+          {/* El layout raíz define el navegador de pantallas.
+            Es un Stack: cada archivo de src/app/ es una ruta (index.tsx -> "/")
+            y el menú de secciones vive dentro de la pantalla de inicio. */}
+          <Stack
+            screenOptions={{
+              // Header
+              headerStyle: { backgroundColor },
+              headerTintColor: textColor,
+              headerTitleStyle: { color: textColor },
+              headerTitleAlign: 'left',
+              headerShadowVisible: false,
 
-            // Contenido de las pantallas
-            contentStyle: { backgroundColor },
-          }}
-        >
-          <Stack.Screen name="index" options={{ title: 'Menú' }} />
+              // Contenido de las pantallas
+              contentStyle: { backgroundColor },
+            }}
+          >
+            <Stack.Screen name="index" options={{ title: 'Menú' }} />
 
-          {homeMenuRoutes
-            .filter((route) => route.name !== 'index')
-            .map((route) => (
+            {homeMenuRoutes
+              .filter((route) => route.name !== 'index')
+              .map((route) => (
+                <Stack.Screen
+                  key={route.name}
+                  name={route.name}
+                  options={{ title: route.title }}
+                />
+              ))}
+
+            {allRoutes.map((route) => (
               <Stack.Screen
                 key={route.name}
                 name={route.name}
                 options={{ title: route.title }}
               />
             ))}
-
-          {allRoutes.map((route) => (
-            <Stack.Screen
-              key={route.name}
-              name={route.name}
-              options={{ title: route.title }}
-            />
-          ))}
-        </Stack>
+          </Stack>
+        </ThemedAlertProvider>
       </ThemeProvider>
     </GestureHandlerRootView>
   );
