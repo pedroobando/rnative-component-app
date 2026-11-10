@@ -8,5 +8,5 @@ module.exports = withUniwindConfig(config, {
   dtsFile: './src/uniwind-types.d.ts',
   // Temas propios de la app (definidos como @variant en src/global.css).
   // Sin esto, Uniwind.setTheme('ocean') fallaría con "theme not registered".
-  extraThemes: ['ocean', 'emerald', 'orange', 'tokyo'],
+  extraThemes: ['ocean', 'emerald', 'orange', 'frost'],
 });

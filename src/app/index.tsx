@@ -1,5 +1,4 @@
-import { ThemedView } from '@/components/ThemedView';
-import { AppMenu } from '@/components/menu/app-menu';
+import { AppMenu, ThemedView } from '@/components';
 
 export default function HomeScreen() {
   return (

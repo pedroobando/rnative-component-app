@@ -1,8 +1,7 @@
 import { Link, router } from 'expo-router';
 import { View } from 'react-native';
 
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { ThemedText, ThemedView } from '@/components';
 
 const palette = [
   { name: 'primary', className: 'bg-primary' },

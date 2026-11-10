@@ -2,9 +2,10 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, type Href } from 'expo-router';
 import { Pressable, ScrollView, View } from 'react-native';
 
-import { ThemedText } from '@/components/ThemedText';
 import { routeToPath, menuSections, type MenuRoute } from '@/constants/Routes';
 import { useResolvedColor } from '@/hooks/use-resolved-color';
+
+import { ThemedText } from '../ThemedText';
 
 type IoniconName = React.ComponentProps<typeof Ionicons>['name'];
 

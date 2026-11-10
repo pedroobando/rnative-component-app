@@ -2,7 +2,7 @@
  * Temas de la app (Uniwind).
  *
  * `light` y `dark` vienen built-in en Uniwind. `ocean`, `emerald`, `orange` y
- * `tokyo` son temas propios, definidos como `@variant` en `src/global.css` y
+ * `frost` son temas propios, definidos como `@variant` en `src/global.css` y
  * registrados en `metro.config.js` -> `extraThemes`.
  *
  * `scheme` indica si el tema es de fondo claro u oscuro. Sirve para:
@@ -10,7 +10,7 @@
  *  - decidir qué color de un par { light, dark } usar en `useThemeColor`
  */
 
-export type AppThemeName = 'light' | 'dark' | 'ocean' | 'emerald' | 'orange' | 'tokyo';
+export type AppThemeName = 'light' | 'dark' | 'ocean' | 'emerald' | 'orange' | 'frost';
 
 /**
  * Uniwind solo conoce los tipos de tema si `src/uniwind-types.d.ts` fue
@@ -32,7 +32,7 @@ export const appThemes: AppTheme[] = [
   { name: 'ocean', label: 'Ocean', icon: '🌊', scheme: 'light' },
   { name: 'emerald', label: 'Emerald', icon: '💚', scheme: 'light' },
   { name: 'orange', label: 'Orange', icon: '🧡', scheme: 'light' },
-  { name: 'tokyo', label: 'Tokio Night', icon: '🌃', scheme: 'dark' },
+  { name: 'frost', label: 'Frost', icon: '❄️', scheme: 'light' },
 ];
 
 /** Tokens de color disponibles en todos los temas (ver src/global.css). */
@@ -53,5 +53,5 @@ export const customThemeSchemes: Record<string, 'light' | 'dark'> = {
   ocean: 'light',
   emerald: 'light',
   orange: 'light',
-  tokyo: 'dark',
+  frost: 'light',
 };

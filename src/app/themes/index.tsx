@@ -2,8 +2,7 @@ import { Link } from 'expo-router';
 import { Pressable, ScrollView } from 'react-native';
 import { Uniwind, useUniwind } from 'uniwind';
 
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { ThemedText, ThemedView } from '@/components';
 import { appThemes, type UniwindThemeName } from '@/constants/themes';
 import { useResolvedColor } from '@/hooks/use-resolved-color';
 

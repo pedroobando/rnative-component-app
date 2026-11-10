@@ -8,7 +8,7 @@
  *   bg-primary, text-text, border-secondary, bg-success...
  * y cambia solo según el tema activo (light/dark).
  *
- * Temas disponibles: light, dark (built-in) + ocean, emerald, orange y tokyo
+ * Temas disponibles: light, dark (built-in) + ocean, emerald, orange y frost
  * (registrados en metro.config.js -> extraThemes).
  *
  * IMPORTANTE: todos los temas deben definir EXACTAMENTE el mismo conjunto
@@ -64,16 +64,16 @@
       --color-border: #c4e6d6;
     }
 
-    /* TOKIO NIGHT — fondo azul profundo con acentos neón */
-    @variant tokyo {
-      --color-primary: #7aa2f7;
-      --color-secondary: #bb9af7;
-      --color-tertiary: #7dcfff;
-      --color-success: #9ece6a;
+    /* FROST — hielo, menta fría y gris malva */
+    @variant frost {
+      --color-primary: #6b5e62;
+      --color-secondary: #d5cad6;
+      --color-tertiary: #c9f0ff;
+      --color-success: #eafffd;
 
-      --color-text: #c0caf5;
-      --color-background: #1a1b26;
-      --color-border: #2f334d;
+      --color-text: #6b5e62;
+      --color-background: #efeff0;
+      --color-border: #d5cad6;
     }
 
     /* ORANGE — naranja combinado con gris */

@@ -7,7 +7,7 @@ No es una app de producto: es una **app de laboratorio** donde cada pantalla aí
 ## Qué hace
 
 - **Navegación con menú lateral (Drawer)** definido por enrutado basado en archivos (Expo Router), con secciones *General*, *Componentes*, *UI* y *Animaciones*.
-- **Temas claro/oscuro y temáticos** (light, dark, ocean, emerald, orange, tokyo) con tokens CSS compartidos entre Tailwind v4 y Uniwind; el tema del sistema se respeta automáticamente.
+- **Temas claro/oscuro y temáticos** (light, dark, ocean, emerald, orange, frost) con tokens CSS compartidos entre Tailwind v4 y Uniwind; el tema del sistema se respeta automáticamente.
 - **Paleta y componentes base reutilizables** (`ThemedView`, `ThemedText`) que se adaptan al tema activo sin código condicional.
 - **Pantallas de demostración** para los patrones más usados en apps móviles.
 
@@ -79,7 +79,7 @@ npx tsc --noEmit    # comprobación de tipos
 
 Los colores viven en un único sitio: `src/global.css`. Cada tema define el mismo conjunto de variables (`--color-primary`, `--color-secondary`, `--color-tertiary`, `--color-success`, `--color-text`, `--color-background`, `--color-border`), y se exponen como utilidades de Tailwind/Uniwind (`bg-primary`, `text-text`, `border-border`, …).
 
-Los temas adicionales (ocean, emerald, orange, tokyo) se registran en `metro.config.js` (`extraThemes`). Para leer un token desde JavaScript usa `useThemeColor` o `useResolvedColor` de `@/hooks/`.
+Los temas adicionales (ocean, emerald, orange, frost) se registran en `metro.config.js` (`extraThemes`). Para leer un token desde JavaScript usa `useThemeColor` o `useResolvedColor` de `@/hooks/`.
 
 ## Inteligencia artificial
 
